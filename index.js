@@ -1,7 +1,18 @@
-import { Bundler } from '@parcel/plugin';
+import {Transform} from '@parcel/plugin';
 
-export default new Bundler({
-    async bundle({ graph }) {
-        console.log("good");
-    }
+export default new Transform({
+  async parse({asset}) {
+    // ...
+    return ast;
+  },
+
+  async transform({asset}) {
+    // ...
+    return [assets];
+  },
+
+  async generate({asset}) {
+    // ...
+    return {code, map};
+  }
 });

@@ -1,14 +1,18 @@
 {
-  "name": "parcel-packager-ogimage",
+  "name": "parcel-transformer-ogimage",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">= 8.0.0",
+    "parcel": "^2.0.0-alpha.1.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/takeokunn/parcel-packagers-ogimage.git"
+    "url": "git+https://github.com/takeokunn/parcel-transformer-ogimage.git"
   },
   "keywords": [
     "parcel"
@@ -16,9 +20,9 @@
   "author": "takeokunn <bararararatty@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/takeokunn/parcel-packagers-ogimage/issues"
+    "url": "https://github.com/takeokunn/parcel-transformer-ogimage/issues"
   },
-  "homepage": "https://github.com/takeokunn/parcel-packagers-ogimage#readme",
+  "homepage": "https://github.com/takeokunn/parcel-transformer-ogimage#readme",
   "dependencies": {
     "@parcel/plugin": "*"
   },
