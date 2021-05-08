@@ -1,5 +1,5 @@
 const url = require('url');
-const {Transformer} = require('@parcel/plugin');
+const { Transformer } = require('@parcel/plugin');
 
 const getMetaTag = (html, property) => {
     const regex = new RegExp(`<meta[^>]*property=["|']${property}["|'][^>]*>`, 'i');
@@ -29,9 +29,7 @@ module.exports = new Transformer({
         const html = await asset.getCode();
         try {
             const ogImageTag = getMetaTag(html, 'og:image');
-            console.log(ogImageTag);
 	    const ogImageContent = getMetaTagContent(ogImageTag);
-
 
 	    const ogUrlTag = getMetaTag(html, 'og:url');
 	    const ogUrlContent = getMetaTagContent(ogUrlTag);

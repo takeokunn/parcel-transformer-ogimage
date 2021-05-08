@@ -1,6 +1,6 @@
 {
   "name": "parcel-transformer-ogimage",
-  "description": "",
+  "description": "Set absolute URL for og:image meta tags.(for parcel version >= 2.0.0)",
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
@@ -15,7 +15,9 @@
     "url": "git+https://github.com/takeokunn/parcel-transformer-ogimage.git"
   },
   "keywords": [
-    "parcel"
+    "parcel",
+    "plugin",
+    "og:image"
   ],
   "author": "takeokunn <bararararatty@gmail.com>",
   "license": "MIT",
@@ -25,6 +27,5 @@
   "homepage": "https://github.com/takeokunn/parcel-transformer-ogimage#readme",
   "dependencies": {
     "@parcel/plugin": "*"
-  },
-  "devDependencies": {}
+  }
 }
