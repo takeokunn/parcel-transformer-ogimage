@@ -1,0 +1,26 @@
+{
+  "name": "parcel-packager-ogimage",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takeokunn/parcel-packagers-ogimage.git"
+  },
+  "keywords": [
+    "parcel"
+  ],
+  "author": "takeokunn <bararararatty@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takeokunn/parcel-packagers-ogimage/issues"
+  },
+  "homepage": "https://github.com/takeokunn/parcel-packagers-ogimage#readme",
+  "dependencies": {
+    "@parcel/plugin": "*"
+  },
+  "devDependencies": {}
+}
