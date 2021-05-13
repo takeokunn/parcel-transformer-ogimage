@@ -1,5 +1,7 @@
 # parcel-transformer-ogimage
 
+[![npm version](https://badge.fury.io/js/parcel-transformer-ogimage.svg)](https://badge.fury.io/js/parcel-transformer-ogimage)
+
 Set absolute URL for og:image meta tags by parcel ver >= 2.0.0.
 
 Inspired by [lukechilds/parcel-plugin-ogimage](https://github.com/lukechilds/parcel-plugin-ogimage)
