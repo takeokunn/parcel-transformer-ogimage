@@ -12,6 +12,14 @@ Inspired by [lukechilds/parcel-plugin-ogimage](https://github.com/lukechilds/par
 $ npm install -D parcel-transformer-ogimage
 ```
 
+Create `.parcelrc` file and paste:
+```json
+{
+  "extends": "@parcel/config-default",
+  "transformers": {"*.html":["...","parcel-transformer-ogimage"]}
+}
+```
+
 ## Usage
 
 Just install this package as a development dependency. Parcel will automatically call it when building your application.
