@@ -27,16 +27,22 @@ const getMetaTagContent = (metaTagHtml) => {
 module.exports = new Transformer({
     async transform({ asset }) {
         const html = await asset.getCode();
+        const imageTags = ['og:image', 'twitter:image'];
         try {
-            const ogImageTag = getMetaTag(html, 'og:image');
-	    const ogImageContent = getMetaTagContent(ogImageTag);
-
-	    const ogUrlTag = getMetaTag(html, 'og:url');
-	    const ogUrlContent = getMetaTagContent(ogUrlTag);
-
-	    const absoluteOgImageUrl = url.resolve(ogUrlContent, ogImageContent);
-	    const ogImageTagAbsoluteUrl = ogImageTag.replace(ogImageContent, absoluteOgImageUrl);
-	    const patchedHtml = html.replace(ogImageTag, ogImageTagAbsoluteUrl);
+            const ogUrlTag = getMetaTag(html, 'og:url');
+            const ogUrlContent = getMetaTagContent(ogUrlTag);
+            let patchedHtml = html;
+            imageTags.forEach(tag => {
+                try {
+                    const imageTag = getMetaTag(html, tag);
+                    const imageTagContent = getMetaTagContent(imageTag);
+                    const absoluteImageUrl = url.resolve(ogUrlContent, imageTagContent);
+                    const imageTagAbsoluteUrl = imageTag.replace(imageTagContent, absoluteImageUrl);
+                    patchedHtml = patchedHtml.replace(imageTag, imageTagAbsoluteUrl);
+                } catch (error) {
+                    console.log(error.message);
+                }
+            });
 
             asset.setCode(patchedHtml);
         } catch (error) {
