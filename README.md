@@ -37,12 +37,18 @@ Parcel will generate that into something like this:
 <meta property="og:image" content="/card.9190ce93.png">
 <meta property="og:url" content="https://example.com">
 ```
+Works also for `twitter:image`.
+```html
+<meta name="twitter:image" content="/card.9190ce93.png">
+```
+
 
 `parcel-plugin-ogimage` will then update the `og:image` with an absolute URL:
 
 ```html
 <meta property="og:image" content="https://example.com/card.9190ce93.png">
 <meta property="og:url" content="https://example.com">
+<meta name="twitter:image" content="https://example.com/card.9190ce93.png">
 ```
 
 ## LICENSE
