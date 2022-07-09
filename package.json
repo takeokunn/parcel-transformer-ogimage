@@ -1,7 +1,7 @@
 {
   "name": "parcel-transformer-ogimage",
   "description": "Set absolute URL for og:image meta tags.(for parcel version >= 2.0.0)",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "engines": {
     "node": ">= 8.0.0",
