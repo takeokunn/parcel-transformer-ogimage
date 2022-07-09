@@ -35,25 +35,43 @@ const getMetaTagContent = (metaTagHtml) => {
     return results[1];
 };
 
+const getAbsoluteOgImageUrl = (baseHtml) => {
+    try {
+        const ogUrlTag = getMetaPropertyTag(baseHtml, 'og:url');
+        return getMetaTagContent(ogUrlTag);
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
 module.exports = new Transformer({
     async transform({ asset }) {
         const baseHtml = await asset.getCode();
+        let patchedHtml = baseHtml;
+
+        const ogUrlContent = getAbsoluteOgImageUrl(baseHtml);
+
+        if(!ogUrlContent) return [asset];
+
+        // for og:image
         try {
-            const ogUrlTag = getMetaPropertyTag(baseHtml, 'og:url');
             const ogImageTag = getMetaPropertyTag(baseHtml, 'og:image');
-            const twitterImageTag = getMetaNameTag(baseHtml, 'twitter:image');
-
-            const ogUrlContent = getMetaTagContent(ogUrlTag);
             const ogImageContent = getMetaTagContent(ogImageTag);
-            const twtiterImageContent = getMetaTagContent(twitterImageTag);
-
             const absoluteOgImageUrl = url.resolve(ogUrlContent, ogImageContent);
             const ogImageTagAbsoluteUrl = ogImageTag.replace(ogImageContent, absoluteOgImageUrl);
-            const twitterImageTagAbsoluteUrl = twitterImageTag.replace(twtiterImageContent, absoluteOgImageUrl);
+            patchedHtml = baseHtml.replace(ogImageTag, ogImageTagAbsoluteUrl);
+            asset.setCode(patchedHtml);
+        } catch (error) {
+            console.log(error.message);
+        }
 
-            let patchedHtml = baseHtml.replace(ogImageTag, ogImageTagAbsoluteUrl);
+        // for twitter:image
+        try {
+            const twitterImageTag = getMetaNameTag(baseHtml, 'twitter:image');
+            const twtiterImageContent = getMetaTagContent(twitterImageTag);
+            const absoluteTwitterImageUrl = url.resolve(ogUrlContent, twtiterImageContent);
+            const twitterImageTagAbsoluteUrl = twitterImageTag.replace(twtiterImageContent, absoluteTwitterImageUrl);
             patchedHtml = patchedHtml.replace(twitterImageTag, twitterImageTagAbsoluteUrl);
-
             asset.setCode(patchedHtml);
         } catch (error) {
             console.log(error.message);
